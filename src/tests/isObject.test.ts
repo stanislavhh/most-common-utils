@@ -1,4 +1,4 @@
-import { isObject } from '@/utils/common';
+import {isObject} from '../utils';
 
 describe('isObject util', () => {
   it('returns true for objects', () => {

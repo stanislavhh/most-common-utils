@@ -1,4 +1,4 @@
-import { isDate } from '@/utils/common';
+import {isDate} from '../utils';
 
 describe('isDate util', () => {
   it('should return correct boolean flag depending on param type', () => {

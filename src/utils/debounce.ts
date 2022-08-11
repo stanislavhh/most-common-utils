@@ -1,4 +1,4 @@
-import { enhanceTimeout } from '@/utils/common/enhanceTimeout';
+import {enhanceTimeout} from './enhanceTimeout';
 
 /**
  * Lodash debounce analog fn
@@ -6,9 +6,9 @@ import { enhanceTimeout } from '@/utils/common/enhanceTimeout';
 export const debounce = (
   fn: Function,
   ms = 0,
-  options?: { leading?: boolean; maxWait?: number }
+  options?: {leading?: boolean; maxWait?: number},
 ) => {
-  const { leading = false, maxWait } = options || {};
+  const {leading = false, maxWait} = options || {};
 
   const {
     getTimer: mainTimer,
@@ -38,7 +38,7 @@ export const debounce = (
     setMainTimer(() => callFn(args), ms);
   };
 
-  return function (...args: any[]) {
+  return (...args: any[]) => {
     if (maxWait && !maxWaitTimer()) {
       setMaxWaitTimer(() => callFn(args), maxWait);
     }

@@ -1,8 +1,10 @@
-import { mergeDeep } from '@/utils/common';
+import {mergeDeep} from '../utils';
 
 describe('mergeDeep util', () => {
   it('works with arrays', () => {
-    expect(mergeDeep([{ test: 'it' }], [{ lets: 'do' }])).toEqual([{ test: 'it', lets: 'do' }]);
+    expect(mergeDeep([{test: 'it'}], [{lets: 'do'}])).toEqual([
+      {test: 'it', lets: 'do'},
+    ]);
   });
 
   it('merges target with sources with a correct result (hard case)', () => {
@@ -13,7 +15,7 @@ describe('mergeDeep util', () => {
           deeper: {
             deeper: {
               primitive: 'anything',
-              array: [{ hi: 'hi', ok: [{ hard: 'hard' }] }],
+              array: [{hi: 'hi', ok: [{hard: 'hard'}]}],
               fn: () => 'fn old',
             },
           },
@@ -25,7 +27,7 @@ describe('mergeDeep util', () => {
         deeper: {
           deeper: {
             deeper: {
-              array: [{ even: 'more', ok: [{ hard2: 'hard2' }] }, { second: 'obj' }],
+              array: [{even: 'more', ok: [{hard2: 'hard2'}]}, {second: 'obj'}],
               fn,
             },
           },
@@ -39,7 +41,11 @@ describe('mergeDeep util', () => {
           deeper: {
             deeper: {
               primitive: 'new',
-              array: [{ ok: ['??'] }, { second: 'obj', any: 'else' }, { last: 'one' }],
+              array: [
+                {ok: ['??']},
+                {second: 'obj', any: 'else'},
+                {last: 'one'},
+              ],
               doesntExistInTarget: {},
             },
           },
@@ -48,7 +54,7 @@ describe('mergeDeep util', () => {
     };
 
     const res = mergeDeep(target, s1, s2) as {
-      deeper: { deeper: { deeper: { deeper: { fn: Function } } } };
+      deeper: {deeper: {deeper: {deeper: {fn: Function}}}};
     };
     expect(res).toEqual({
       deeper: {
@@ -57,9 +63,9 @@ describe('mergeDeep util', () => {
             deeper: {
               primitive: 'new',
               array: [
-                { hi: 'hi', ok: ['??'], even: 'more' },
-                { second: 'obj', any: 'else' },
-                { last: 'one' },
+                {hi: 'hi', ok: ['??'], even: 'more'},
+                {second: 'obj', any: 'else'},
+                {last: 'one'},
               ],
               fn,
               doesntExistInTarget: {},

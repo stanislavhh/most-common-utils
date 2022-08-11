@@ -1,4 +1,4 @@
-import { cloneDeep } from '@/utils/common';
+import {cloneDeep} from '../utils';
 
 describe('cloneDeep util', () => {
   it('returns correct clone', () => {

@@ -1,12 +1,15 @@
+
+type Timer = ReturnType<typeof setTimeout> | undefined;
+
 /**
  * Helper that allows to track timerID
  */
 export const enhanceTimeout = (): {
-  getTimer: Function;
+  getTimer: () => Timer;
   clearTimer: Function;
   setTimer: Function;
 } => {
-  let timerId: number | undefined;
+  let timerId: Timer;
 
   return {
     getTimer: () => timerId,
@@ -17,7 +20,7 @@ export const enhanceTimeout = (): {
       }
     },
     setTimer: (timerFn: Function, time: number) => {
-      timerId = setTimeout(timerFn, time);
+      timerId = setTimeout(timerFn, time) as unknown as Timer;
     },
   };
 };
