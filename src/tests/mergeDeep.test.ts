@@ -1,22 +1,22 @@
-import {mergeDeep} from '../utils';
+import { mergeDeep } from "../";
 
-describe('mergeDeep util', () => {
-  it('works with arrays', () => {
-    expect(mergeDeep([{test: 'it'}], [{lets: 'do'}])).toEqual([
-      {test: 'it', lets: 'do'},
+describe("mergeDeep util", () => {
+  it("works with arrays", () => {
+    expect(mergeDeep([{ test: "it" }], [{ lets: "do" }])).toEqual([
+      { test: "it", lets: "do" },
     ]);
   });
 
-  it('merges target with sources with a correct result (hard case)', () => {
-    const fn = () => 'fn new';
+  it("merges target with sources with a correct result (hard case)", () => {
+    const fn = () => "fn new";
     const target = {
       deeper: {
         deeper: {
           deeper: {
             deeper: {
-              primitive: 'anything',
-              array: [{hi: 'hi', ok: [{hard: 'hard'}]}],
-              fn: () => 'fn old',
+              primitive: "anything",
+              array: [{ hi: "hi", ok: [{ hard: "hard" }] }],
+              fn: () => "fn old",
             },
           },
         },
@@ -27,7 +27,10 @@ describe('mergeDeep util', () => {
         deeper: {
           deeper: {
             deeper: {
-              array: [{even: 'more', ok: [{hard2: 'hard2'}]}, {second: 'obj'}],
+              array: [
+                { even: "more", ok: [{ hard2: "hard2" }] },
+                { second: "obj" },
+              ],
               fn,
             },
           },
@@ -40,11 +43,11 @@ describe('mergeDeep util', () => {
         deeper: {
           deeper: {
             deeper: {
-              primitive: 'new',
+              primitive: "new",
               array: [
-                {ok: ['??']},
-                {second: 'obj', any: 'else'},
-                {last: 'one'},
+                { ok: ["??"] },
+                { second: "obj", any: "else" },
+                { last: "one" },
               ],
               doesntExistInTarget: {},
             },
@@ -54,18 +57,18 @@ describe('mergeDeep util', () => {
     };
 
     const res = mergeDeep(target, s1, s2) as {
-      deeper: {deeper: {deeper: {deeper: {fn: Function}}}};
+      deeper: { deeper: { deeper: { deeper: { fn: Function } } } };
     };
     expect(res).toEqual({
       deeper: {
         deeper: {
           deeper: {
             deeper: {
-              primitive: 'new',
+              primitive: "new",
               array: [
-                {hi: 'hi', ok: ['??'], even: 'more'},
-                {second: 'obj', any: 'else'},
-                {last: 'one'},
+                { hi: "hi", ok: ["??"], even: "more" },
+                { second: "obj", any: "else" },
+                { last: "one" },
               ],
               fn,
               doesntExistInTarget: {},
@@ -74,6 +77,6 @@ describe('mergeDeep util', () => {
         },
       },
     });
-    expect(res.deeper.deeper.deeper.deeper.fn()).toBe('fn new');
+    expect(res.deeper.deeper.deeper.deeper.fn()).toBe("fn new");
   });
 });

@@ -1,4 +1,4 @@
-import { AnyObject, Primitive } from "../types";
+import { AnyObject, Primitive } from "./types";
 import { isDate } from "./isDate";
 
 /**

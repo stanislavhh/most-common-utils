@@ -1,18 +1,18 @@
-import {cloneDeep} from '../utils';
+import { cloneDeep } from "../";
 
-describe('cloneDeep util', () => {
-  it('returns correct clone', () => {
+describe("cloneDeep util", () => {
+  it("returns correct clone", () => {
     class MockedClass {
       value = 1;
     }
 
     const source = {
-      string: 'value',
+      string: "value",
       boolean: false,
-      date: new Date('10-10-2000'),
+      date: new Date("10-10-2000"),
       obj: {
         mockedClass: new MockedClass(),
-        array: ['1', {}],
+        array: ["1", {}],
       },
     };
 

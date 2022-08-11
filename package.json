@@ -1,6 +1,6 @@
 {
   "name": "most-common-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fast & light utils package that has the most popular methods",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -1,5 +1,5 @@
-import {AnyObject, Primitive} from '../types';
-import {isObject} from './isObject';
+import { AnyObject, Primitive } from "./types";
+import { isObject } from "./isObject";
 /**
  * merges deeply target with sources (lodash analog)
  */
@@ -16,7 +16,7 @@ type MergeDeepOverload = {
     source1: S1,
     source2: S2,
     source3: S3,
-    source4: S4,
+    source4: S4
   ): T & S1 & S2 & S3 & S4;
   (target: AnyObject, ...sources: Array<AnyObject>): AnyObject;
 };
@@ -51,11 +51,11 @@ export const mergeDeep: MergeDeepOverload = (
     for (const key in source) {
       if (isObject(source[key]) || Array.isArray(source[key])) {
         if (!target[key]) {
-          Object.assign(target, {[key]: isObject(source[key]) ? {} : []});
+          Object.assign(target, { [key]: isObject(source[key]) ? {} : [] });
         }
         mergeDeep(target[key], source[key]);
       } else {
-        Object.assign(target, {[key]: source[key] as Primitive});
+        Object.assign(target, { [key]: source[key] as Primitive });
       }
     }
   }
