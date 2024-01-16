@@ -8,7 +8,7 @@ export const debounce = (
   ms = 0,
   options?: { leading?: boolean; maxWait?: number }
 ) => {
-  const { leading = false, maxWait } = options || {};
+  const { leading = false, maxWait } = options ?? {};
 
   const {
     getTimer: mainTimer,
